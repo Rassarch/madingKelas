@@ -1,3 +1,7 @@
+<?php
+    include("konfigurasi/koneksi.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,36 +26,15 @@
     
     <h2 class="text-center text-bold mt-3">Mading Sekolah</h2>
     <div class="container mt-4">
-        <div class="masonry">
+        <div class="masonry"> 
+            <?php
+                $query = "SELECT * FROM konten ORDER BY tanggal DESC";
+                $sql = mysqli_query($koneksi, $query);
+                $konten = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+                foreach ($konten as $data):
+            ?>
             <div class="masonry-item">
-                <img src="img/gogh.jpg" class="w-100">
-                <div class="p-3">
-                    <h5>Vincent Van Gogh</h5>
-                    <h6>Two Poplars on a Hill</h6>
-                    <small>Lukisan ini menggambarkan dua pohon poplar yang menjulang tinggi di atas bukit, simbol harapan dan ketahanan dalam menghadapi kesulitan. Dengan latar belakang langit kuning cerah, karya ini mencerminkan kekuatan alam dan semangat manusia.</small> <br>
-                    <small>1889</small>
-                </div>
-            </div>
-            <div class="masonry-item">
-                <img src="img/Plato.jpg" class="w-100">
-                <div class="p-3">
-                    <h5>Plato</h5>
-                    <small>Plato adalah seorang filsuf dan matematikawan Yunani, terkenal sebagai pendiri Akademi Platonik di Athena, yang dianggap sebagai sekolah tinggi pertama di dunia barat. Karyanya dalam dialog filosofis banyak membahas moralitas, politik, dan keindahan.</small> <br>
-                    <small>c. 427–347 SM</small>
-                </div>
-            </div>
-            <div class="masonry-item">
-                <img src="img/starryNight.jpg" class="w-100">
-                <div class="p-3">
-                    <h5>Vincent Van Gogh</h5>
-                    <h6>The Starry Night</h6>
-                    <small>The Starry Night terinspirasi oleh pemandangan dari jendela van Gogh di rumah sakit jiwa di Saint-Rémy, Prancis. 
-                        Lukisan ini mengekspresikan emosi yang mendalam dan merupakan perpaduan antara observasi nyata dan interpretasi imajinatif.</small> <br>
-                    <small>1889</small>
-                </div>
-            </div>
-            <div class="masonry-item">
-                <img src="img/sunplower.jpg" class="w-100">
+                <img src="img/<?= $data['gamar'] ?>" class="w-100">
                 <div class="p-3">
                     <h5>Vincent Van Gogh</h5>
                     <h6>Sunflowers</h6>
@@ -61,6 +44,9 @@
                     <small>1888</small>
                 </div>
             </div>
+            <?php
+                endforeach
+            ?>
         </div>
     </div>
 

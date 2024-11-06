@@ -20,6 +20,7 @@
         if ($cek_password) {
             echo "Mantap le...";
             $_SESSION['user'] = $user; // menyimpan user di session
+            header('location: ../index.php');
         } else {
             // tidak ada user
             $_SESSION['error'] = "Password mu salah le...";

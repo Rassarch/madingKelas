@@ -6,7 +6,7 @@
     $tanggal = $_POST['tanggal'];
     $deskripsi = $_POST['deskripsi'];
 
-    // Khusus untuk gambar
+        // Khusus untuk gambar
     $nama_gambar = time().$_FILES['gambar']['name'];
     $tmp_gambar = $_FILES['gambar']['tmp_name'];
     $direktori = "../img/";
@@ -23,6 +23,7 @@
 
         if ($sql) {
             echo "Mading mu berhasil di tambahin le..";
+            header('location: ../index.php');
         }
     }
 

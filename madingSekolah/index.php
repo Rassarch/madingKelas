@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('konfigurasi/koneksi.php')
+include('konfigurasi/koneksi.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +14,7 @@ include('konfigurasi/koneksi.php')
         .masonry {
             column-count: 3;
             column-gap: 1rem;
+            
         }
 
         .masonry-item {
@@ -28,21 +29,19 @@ include('konfigurasi/koneksi.php')
     <div class="container">
         <div class="row mt-3">
             <div class="col-md-3">
-                <?php
-                if (isset($_SESSION['user'])) :                            
-                ?>
+                <?php if (isset($_SESSION['user'])) : ?>
                 <form action="proses/proses-logout.php" method="post">
                     <button class="btn btn-danger">Logout</button>
                 </form>
-                <?php
-                endif
-                ?>
+                <?php else : ?>
+                <a href="login.php" class="btn btn-primary">Login</a>
+                <?php endif ?>
             </div>
             <div class="col-md-6">
-                <h2 class="text-center">Mading Kucing</h2>
+                <h2 class="text-center">MADING SEKOLAH</h2>
             </div>
             <div class="col-md-3 text-end">
-                <a href="upload.php" class="btn btn-primary">Upload Mading</a>
+                <a href="upload.php" class="btn btn-warning">Upload Mading</a>
             </div>
         </div>
     </div>    
@@ -55,19 +54,18 @@ include('konfigurasi/koneksi.php')
             foreach ($konten as $data):
             ?>
             <div class="masonry-item mb-2">
-                <img class="w-100"  src="gambar/<?= $data['gambar']?>">
-                <div class="p-3">
-                    <h4><?= $data['judul']?></h4>
-                    <small><?= $data['tanggal']?></small>
-                    <h6><?= $data['deskripsi']?></h6>
-                </div>
+                <a href="ditel.php?id=<?= $data['id'] ?>" class="link-secondary link-underline-opacity-0 link-offset-0">
+                    <img class="w-100" src="img/<?= $data['gambar']?>">
+                    <div class="p-3">
+                        <h4><?= $data['judul']?></h4>
+                        <small><?= $data['tanggal']?></small>
+                    </div>
+                </a>
             </div>
-            <?php
-            endforeach
-            ?>            
+            <?php endforeach ?>
         </div>
     </div>
 </body>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </html>
